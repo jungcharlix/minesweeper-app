@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>採地雷 — Minesweeper</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin: 0; padding: 0; background: #1a1714; color: #f4f0ea; font-family: 'Inter', -apple-system, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  body { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 32px 16px; box-sizing: border-box; }
+  *, *::before, *::after { user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent; }
+  #root { display: flex; align-items: center; justify-content: center; }
+  @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+  @keyframes comboFloat {
+    0% { transform: translate(-50%, -50%) scale(0.7); opacity: 0; }
+    20% { transform: translate(-50%, -55%) scale(1.2); opacity: 1; }
+    60% { transform: translate(-50%, -80%) scale(1); opacity: 1; }
+    100% { transform: translate(-50%, -120%) scale(0.9); opacity: 0; }
+  }
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    50% { transform: translateX(6px); }
+    75% { transform: translateX(-4px); }
+  }
+  @keyframes coinPop {
+    0% { transform: translate(0, 0); opacity: 0; }
+    20% { transform: translate(0, -8px); opacity: 1; }
+    80% { transform: translate(0, -18px); opacity: 1; }
+    100% { transform: translate(0, -28px); opacity: 0; }
+  }
+  @keyframes coinFloat {
+    0% { transform: translate(-50%, -30%) scale(0.6); opacity: 0; }
+    15% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+    80% { transform: translate(-50%, -60%) scale(1); opacity: 1; }
+    100% { transform: translate(-50%, -90%) scale(0.95); opacity: 0; }
+  }
+  @keyframes xrayPulse {
+    0%, 100% { opacity: 0.65; }
+    50% { opacity: 0.95; }
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script>
+  // Tweak defaults — host rewrites this block on disk
+  window.__TWEAK_DEFAULTS__ = /*EDITMODE-BEGIN*/{
+    "palette": "warm",
+    "difficulty": "easy",
+    "mode": "classic",
+    "numberStyle": "color",
+    "longPressFlag": true,
+    "showHints": false
+  }/*EDITMODE-END*/;
+</script>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="ios-frame.jsx"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="game.jsx"></script>
+<script type="text/babel" src="modes.jsx"></script>
+<script type="text/babel" src="shop-config.jsx"></script>
+<script type="text/babel" src="shop-ui.jsx"></script>
+<script type="text/babel" src="shop-sheet.jsx"></script>
+<script type="text/babel" src="app.jsx"></script>
+</body>
+</html>
